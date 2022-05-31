@@ -26,7 +26,7 @@ export class RegistrationFormComponent implements OnInit {
 
     setInterval(() => {
       this.users = this.userService.getUsers();
-    }, 500);
+    }, 1000);
 
   }
 

@@ -5,6 +5,8 @@
             <h3>Create a New Blog</h3>
             <app-create-blog>
             </app-create-blog>
+            <br>
+            <ng-template appPlaceholderDirective></ng-template>
         </div>
 
         <div class="col-md-4 right-column">
@@ -14,7 +16,6 @@
                 *ngFor="let blog of blogs"
                 [blogInformation]="blog">
             </app-blog-tile>
-            <ng-template appPlaceholderDirective></ng-template>
         </div>
 
     </div>
