@@ -8,11 +8,15 @@
                     <input 
                         type="email" 
                         class="form-control" 
-                        id="exampleInputEmail1" 
+                        id="email"
+                        required 
                         aria-describedby="emailHelp"
                         placeholder="Enter email"
                         formControlName="email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <span 
+                        *ngIf="email?.invalid && email?.dirty && email?.touched && email?.value !== ''"
+                        class="alert alert-danger">Email is invalid!</span>
                 </div>
                 <br>
 
@@ -23,6 +27,7 @@
                         class="form-control" 
                         id="exampleInputPassword1" 
                         placeholder="Password"
+                        required
                         formControlName="password">
                 </div>
                 <br>
@@ -33,11 +38,10 @@
         <div class="col-md-4">
             <h4>Registered Users</h4>
             <small class="small">Click to Delete User from System</small>
-            <div *ngFor="let user of users" class="card">
+            <div *ngFor="let user of users" class="cards" (click)="deleteUser(user.email)">
                 <h5 
                     *ngIf="user" 
-                    #cards
-                    (click)="deleteUser(user.email)">
+                    #cards>
                     {{ user.email }}</h5>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -12,13 +12,14 @@ export class RegistrationFormComponent implements OnInit {
   signupForm: FormGroup;
   users: any;
   @ViewChild('cards') card?: ElementRef; 
+  get email() { return this.signupForm.get('email'); }
 
   constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      'email': new FormControl(null),
-      'password': new FormControl(null)
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, Validators.required)
     })
 
     this.users = this.userService.getUsers();
@@ -26,6 +27,7 @@ export class RegistrationFormComponent implements OnInit {
     setInterval(() => {
       this.users = this.userService.getUsers();
     }, 500);
+
   }
 
 
