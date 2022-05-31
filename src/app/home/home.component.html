@@ -1,0 +1,22 @@
+<div class="containter">
+    <div class="row">
+
+        <div class="col-md-5 left-column">
+            <h3>Create a New Blog</h3>
+            <app-create-blog>
+            </app-create-blog>
+        </div>
+
+        <div class="col-md-4 right-column">
+            <h3>Existing Blogs</h3>
+            <hr class="horizontal-line">
+            <app-blog-tile 
+                *ngFor="let blog of blogs"
+                [blogInformation]="blog">
+            </app-blog-tile>
+
+            <ng-content></ng-content>
+        </div>
+
+    </div>
+</div>

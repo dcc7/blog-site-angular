@@ -1,0 +1,32 @@
+<hr>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-5 card left-column">
+            <h4>{{ blog.title }}</h4>
+            <hr>
+            <p>{{ blog.body }}</p>
+        </div>
+
+
+        <div class="col-md-5 right-column">
+            <div class="input-area">
+                <label for=""><h5>Blog Title</h5></label><br>
+                <input #title type="text" [value]="blog.title">
+            </div>
+            <br>
+            <div class="input-area">
+                <label for=""><h5>Blog Body</h5></label><br>
+                <textarea #body name="" id="" cols="45" rows="10" [value]="blog.body"></textarea>
+            </div>
+            
+            <br>
+            
+            <button class="btn btn-primary" (click)="editBlog()">Edit Blog</button>
+            <button class="btn btn-danger" (click)="deleteBlog(blog.id)">Delete Blog</button>
+        </div>
+
+
+    </div>
+</div>
