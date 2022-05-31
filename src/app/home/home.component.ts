@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     hostViewContainerRef.clear();
 
     const componentRef = hostViewContainerRef.createComponent<AlertComponent>(AlertComponent);
-    componentRef.instance.message = 'Dynamic Component Practice!';
+    componentRef.instance.message = 'Dynamic Component Practice! Click Me!';
   }
 
 

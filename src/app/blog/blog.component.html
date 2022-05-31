@@ -11,6 +11,7 @@
 
 
         <div class="col-md-5 right-column">
+            <h3>Edit Existing Blog</h3>
             <div class="input-area">
                 <label for=""><h5>Blog Title</h5></label><br>
                 <input #title type="text" [value]="blog.title">
@@ -23,7 +24,7 @@
             
             <br>
             
-            <button class="btn btn-primary" (click)="editBlog()">Edit Blog</button>
+            <button class="btn btn-primary" (click)="editBlog()">Confirm Edit</button>
             <button class="btn btn-danger" (click)="deleteBlog(blog.id)">Delete Blog</button>
         </div>
 
