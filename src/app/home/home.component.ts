@@ -1,9 +1,5 @@
-import { Component, ComponentFactoryResolver, DoCheck, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AllBlogsService } from '../all-blogs.service';
-import { Blog } from '../models/blog.model';
-import { map } from 'rxjs/operators';
-import { async } from '@angular/core/testing';
 import { AlertComponent } from '../alert/alert.component';
 import { PlaceholderDirectiveDirective } from '../placeholder-directive.directive';
 
@@ -15,11 +11,11 @@ import { PlaceholderDirectiveDirective } from '../placeholder-directive.directiv
 export class HomeComponent implements OnInit {
 
   blogs: any;
-  @ViewChild(PlaceholderDirectiveDirective, { static: false }) alertHost: PlaceholderDirectiveDirective;
+  @ViewChild(PlaceholderDirectiveDirective, {static: true}) alertHost!: PlaceholderDirectiveDirective;
 
   constructor(
     private blogService: AllBlogsService,
-    private componentFactoryResolver: ComponentFactoryResolver) { }
+    ) { }
 
   ngOnInit(): void {
 
@@ -28,13 +24,16 @@ export class HomeComponent implements OnInit {
       this.blogs = blogs;
     })
    }, 400)
-      
+  
+   this.showAlert();
   }
 
-  showAlert() {
-    // const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
-    // const hostViewContainerRef = this.alertHost.viewContainerRef;
+  private showAlert() {
+    const hostViewContainerRef = this.alertHost.viewContainerRef;
+    hostViewContainerRef.clear();
 
+    const componentRef = hostViewContainerRef.createComponent<AlertComponent>(AlertComponent);
+    componentRef.instance.message = 'Click to make me Disappear!';
   }
 
 

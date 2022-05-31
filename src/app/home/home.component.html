@@ -14,8 +14,7 @@
                 *ngFor="let blog of blogs"
                 [blogInformation]="blog">
             </app-blog-tile>
-
-            <ng-content></ng-content>
+            <ng-template appPlaceholderDirective></ng-template>
         </div>
 
     </div>

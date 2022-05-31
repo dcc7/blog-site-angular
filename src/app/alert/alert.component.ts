@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-alert',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
 
+  @ViewChild('pTag') pTag: ElementRef;
+  @Input() message: any;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  disappear(){
+    this.pTag.nativeElement.remove();
   }
 
 }
