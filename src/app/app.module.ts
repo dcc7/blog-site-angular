@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { AlertComponent } from './alert/alert.component';
 import { PlaceholderDirectiveDirective } from './placeholder-directive.directive';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,15 @@ import { PlaceholderDirectiveDirective } from './placeholder-directive.directive
     ErrorPageComponent,
     BlogListComponent,
     AlertComponent,
-    PlaceholderDirectiveDirective
+    PlaceholderDirectiveDirective,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
