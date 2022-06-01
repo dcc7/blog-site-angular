@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   blogs: any;
   interval: any
+  count: number = 0;
   @ViewChild(PlaceholderDirectiveDirective, {static: true}) alertHost!: PlaceholderDirectiveDirective;
 
   constructor(
@@ -23,12 +24,15 @@ export class HomeComponent implements OnInit, OnDestroy {
    this.interval = setInterval(() => {
       this.blogs = this.blogService.fetchBlogs().subscribe((blogs) => {
       this.blogs = blogs;
-    })
-   }, 400)
 
-   
+      if (this.blogs.length > 3 && this.count <= 1){
+        this.showAlert();
+      }
+
+      this.count++
+    })
+   }, 500)
   
-   this.showAlert();
   }
 
   private showAlert() {

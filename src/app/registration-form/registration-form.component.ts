@@ -11,6 +11,7 @@ export class RegistrationFormComponent implements OnInit {
 
   signupForm: FormGroup;
   users: any;
+  id: number;
   @ViewChild('cards') card?: ElementRef; 
   get email() { return this.signupForm.get('email'); }
 
@@ -30,16 +31,16 @@ export class RegistrationFormComponent implements OnInit {
 
   }
 
-
   onSubmit() {
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;
     
     this.userService.addUser(email, password);
+    console.log('submitted to service');
   }
 
-  deleteUser(email: string) {
-    this.userService.deleteUser(email);
-    this.card?.nativeElement.remove();
+  deleteUser(id: string) {
+    const nid = parseInt(id);
+    this.userService.deleteUser(nid);
   }
 }

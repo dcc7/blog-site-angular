@@ -39,11 +39,12 @@
             <h4>Registered Users</h4>
             <small class="small">Click to Delete User from System</small>
             <div *ngFor="let user of users" class="cards">
-                <h5 
+                <button 
                     *ngIf="user" 
                     #cards
-                    (click)="deleteUser(user.email)">
-                    {{ user.email }}</h5>
+                    class="btn btn-success"
+                    (click)="deleteUser(user.id)">
+                    {{ user.email }}</button>
             </div>
         </div>
     </div>
