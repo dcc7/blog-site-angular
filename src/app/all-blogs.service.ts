@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Blog } from './models/blog.model';
 import { map } from 'rxjs/operators';
 
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({

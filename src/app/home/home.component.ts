@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AllBlogsService } from '../all-blogs.service';
 import { AlertComponent } from '../alert/alert.component';
 import { PlaceholderDirectiveDirective } from '../placeholder-directive.directive';
+import { Blog } from '../models/blog.model';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { PlaceholderDirectiveDirective } from '../placeholder-directive.directiv
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  blogs: any;
+  blogs: Blog[];
   interval: any
   count: number = 0;
   @ViewChild(PlaceholderDirectiveDirective, {static: true}) alertHost!: PlaceholderDirectiveDirective;
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
    this.interval = setInterval(() => {
-      this.blogs = this.blogService.fetchBlogs().subscribe((blogs) => {
+      this.blogService.fetchBlogs().subscribe((blogs) => {
       this.blogs = blogs;
 
       if (this.blogs.length > 3 && this.count <= 1){
