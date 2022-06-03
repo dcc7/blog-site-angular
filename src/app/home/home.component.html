@@ -3,7 +3,8 @@
 
         <div class="col-md-5 left-column">
             <h3>Create a New Blog</h3>
-            <app-create-blog>
+            <app-create-blog
+                (refresh)="refreshData()">
             </app-create-blog>
             <br>
             <ng-template 

@@ -22,7 +22,7 @@ export class AllBlogsService {
 
 
   createBlog(newBlog: any) {
-    this.postBlog(newBlog);
+    return this.postBlog(newBlog);
   }
 
   updateBlog(updatedBlog: Blog) {
@@ -49,11 +49,6 @@ export class AllBlogsService {
 
   postBlog(blogData: any) {
     return this.http.post<Blog>('https://blog-project-e36e5-default-rtdb.firebaseio.com/blogs.json', blogData)
-      .subscribe((information) => {
-        // console.log(information);
-      }, error => {
-        console.log(error);
-      })
   }
 
   deleteBlog(id: string) {

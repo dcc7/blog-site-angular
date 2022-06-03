@@ -21,8 +21,9 @@ export class CreateBlogComponent implements OnInit {
 
   createBlog(){
     const newBlog = {title: this.title.nativeElement.value , body: this.body.nativeElement.value };
-    this.blogService.createBlog(newBlog);
-    // this.refresh.emit();
+    this.blogService.createBlog(newBlog).subscribe(() => {
+      this.refresh.emit();
+    })
   }
 
 }

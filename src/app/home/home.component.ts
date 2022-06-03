@@ -21,19 +21,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit(): void {
+    this.refreshData();
+  }
 
-   this.interval = setInterval(() => {
+  refreshData() {
       this.blogService.fetchBlogs().subscribe((blogs) => {
       this.blogs = blogs;
 
       if (this.blogs.length > 3 && this.count <= 1){
-        this.showAlert();
+        this.showAlert(); //show dynamic component based upon condition.
       }
-
       this.count++
     })
-   }, 500)
-  
   }
 
   private showAlert() {
@@ -44,9 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     componentRef.instance.message = 'Dynamic Component Practice! Click Me!';
   }
 
-  ngOnDestroy(): void {
-    clearInterval(this.interval);
-  }
+  ngOnDestroy(): void {}
 
 
 }
